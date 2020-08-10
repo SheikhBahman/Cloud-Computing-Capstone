@@ -19,7 +19,7 @@ There are a set of questions which will be answered using the dataset. These que
 
 # Task 1
 
-**1.	Brief overview of data extraction and cleaning
+**1.	Brief overview of data extraction and cleaning**
 
 As mentioned in the project description in this project we were asked to work on the dataset from the US Bureau of Transportation Statistics (BTS). The dataset was hosted as an Amazon EBS volume snapshot with US Snapshot ID (Linux/Unix): snap-e1608d88 and size of 15 GB. Therefore, I have decided to utilize the AWS-EC2 to copy and extract the data. After extracting the data and selecting the necessary fields I have assembled all the data from different files to a single csv file and store it into AWS-S3 (shown in Fig. 1). I have followed the following steps as also shown in Fig. 1 to extract and prepare the data:
 
