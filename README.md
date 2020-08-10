@@ -40,10 +40,14 @@ As mentioned in the project description in this project we were asked to work on
 
 *	To connect the S3 and EC2 the IAM policy should be created and also both EC2 and S3 should be created in the same region.
 *	Access Key for the bucket should be set in EC2 using the following command:
+
                                           aws configure
 *	Then we can use the following command to copy the file from EC2 to S3
+
             aws s3 cp CleanedData.csv s3://cloudcoursecap/aviation/
             
 7.	Further cleaning the data: I observed that there are some null values in the data also I wanted to filter out the cancelled flights from the data but I realized that the part of the results provided to us in “Task 1 Example Solutions” to check our results were calculated without these filtrations. So my results for group 1 and question-1 of group 2 are based on no further cleaning but for group2 question 2, 3, 4 and group 3 questions I have further cleaned the data and omit the cancelled flights or any null data. I have decided to use pySpark queries: data rows with null values omitted from the dataset and also data rows with Cancelled column values equal to 1 are not considered to provide part of the results.
+
+![GitHub Logo](/IMG/1.png)
 
 
