@@ -51,6 +51,6 @@ As mentioned in the project description in this project we were asked to work on
 ![GitHub Logo](/IMG/1.png)
 
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+[![Watch the video](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.theverge.com%2F2019%2F8%2F13%2F20803418%2Fyoutube-demonetization-appeals-pilot-program-creators&psig=AOvVaw0CepMVpfDcdFIm9Lnngg-O&ust=1597190123209000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDkibv4kesCFQAAAAAdAAAAABAD)](https://youtu.be/-U5e7SN_v8g)
 
 
