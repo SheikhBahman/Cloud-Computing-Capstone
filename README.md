@@ -51,6 +51,6 @@ As mentioned in the project description in this project we were asked to work on
 ![GitHub Logo](/IMG/1.png)
 
 
-https://youtu.be/4Gfl0WuONMY
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
 
 
