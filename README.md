@@ -133,8 +133,8 @@ aws configure
 
 3.	From Task-1 of the project I have stored the cleaned data assembled as a single CSV file in my S3 bucket. I copied the cleaned data from my S3 bucket into the EC2 instance:
 
- aws s3 cp s3://cloudcoursecap/aviation/CleanedData.csv   
 
+                                          aws s3 cp s3://cloudcoursecap/aviation/CleanedData.csv   
 
 4.	To ingest the data as a streaming data first I have created an AWS-kinesis stream with 100 shard.
 
@@ -154,6 +154,8 @@ aws configure
 
 9.	After connecting to kinesis streamed data I utilized PySpak SQL to inquiry and then I have used writeStream to show them on the concole.
 
+![GitHub Logo](/IMG/8.png)
+
 10.	For the questions which needed to be stored on DynamoDB first I have created a separate table for each question in DynamoDB.
 
 11.	To efficiently store the queries results into the DynamoDB tables I have created an AWS Lambda function to automatically push the data to DynamoDB table as explained below.
@@ -162,8 +164,30 @@ aws configure
 
 ![GitHub Logo](/IMG/4.png)
 
+13.	So when in PySpark I obtain the result for a question, I stored the obtained result into S3 then automatically it will be pushed to the DynamoDB table using the Lambda function. It should be mention that it was challenging for me to how I can saved the live batch quarries into S3. For example for Group 1 question 2 I used this commands to show the results in the console:
 
+![GitHub Logo](/IMG/5.png)
+
+So because I used the “complete” mode spark doesn’t allow to save the results as file so to save the results (the last batch) we should store the results in the memory and then send it to S3 as:
+
+![GitHub Logo](/IMG/6.png)
+
+14.	To connect S3, DynamoDB and CloudWatch to lambda function I also needed to create an IAM policy and a role to attach the policy to the Lambda function. 
+
+15.	I also created a Cloudwatch to debug the system.
+
+![GitHub Logo](/IMG/7.png)
+
+
+
+
+**I have recorded the implimentation steps in the following video**
 
 [![Watch the video](https://cdn.vox-cdn.com/thumbor/LR5ki43-jBT1N6nwkcAb4Lg0SnE=/0x0:1200x800/1220x813/filters:focal(504x304:696x496):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65010013/youtube.0.jpg)](https://youtu.be/-U5e7SN_v8g)
+
+
+
+
+**Please see the Task 2 PDF report for more details on Spark Streaming SQL queries**
 
 
