@@ -18,18 +18,29 @@ There are a set of questions which will be answered using the dataset. These que
 * These are questions I have tried to answer from the data using either Batch or Stream processing:
 
 Group 1:
-	1. Rank the top 10 most popular airports by numbers of flights to/from the airport.
-	2. Rank the top 10 airlines by on-time arrival performance.
-	3. Rank the days of the week by on-time arrival performance.
-Group 2:
-	1. For each airport X, rank the top-10 carriers in decreasing order of on-time departure performance from X.
-	2. For each source airport X, rank the top-10 destination airports in decreasing order of on-time departure performance from X.
-	3. For each source-destination pair X-Y, rank the top-10 carriers in decreasing order of on-time arrival performance at Y from X.
-	4. For each source-destination pair X-Y, determine the mean arrival delay (in minutes) for a flight from X to Y.
-Group 3 (Answer both questions using Hadoop (or an equivalent batch processing system). You may also use Spark Streaming (or an equivalent stream processing system) to answer Question 2.):
-	1. Does the popularity distribution of airports follow a Zipf distribution? If not, what distribution does it follow?
-	2. Tom wants to travel from airport X to airport Z. However, Tom also wants to stop at airport Y for some sightseeing on the way. More concretely, Tom has the following requirements
 
+	1. Rank the top 10 most popular airports by numbers of flights to/from the airport.
+	
+	2. Rank the top 10 airlines by on-time arrival performance.
+	
+	3. Rank the days of the week by on-time arrival performance.
+	
+Group 2:
+
+	1. For each airport X, rank the top-10 carriers in decreasing order of on-time departure performance from X.
+	
+	2. For each source airport X, rank the top-10 destination airports in decreasing order of on-time departure performance from X.
+	
+	3. For each source-destination pair X-Y, rank the top-10 carriers in decreasing order of on-time arrival performance at Y from X.
+	
+	4. For each source-destination pair X-Y, determine the mean arrival delay (in minutes) for a flight from X to Y.
+	
+Group 3:
+
+	1. Does the popularity distribution of airports follow a Zipf distribution? If not, what distribution does it follow?
+	
+	2. Tom wants to travel from airport X to airport Z. However, Tom also wants to stop at airport Y for some sightseeing on the way. More concretely, Tom has the following requirements
+	
 
 # For eack task I have recorded the steps I followed to setup my cloud system on AWS (please see the video)
 
