@@ -15,6 +15,22 @@ I will be answering a common set of questions in different stacks/systems – in
 
 There are a set of questions which will be answered using the dataset. These questions involve discovering useful information such as the best day of week to fly to minimize delays, the most popular airports, the most on-time airlines, etc. 
 
+* These are questions I have tried to answer from the data using either Batch or Stream processing:
+
+Group 1:
+	1. Rank the top 10 most popular airports by numbers of flights to/from the airport.
+	2. Rank the top 10 airlines by on-time arrival performance.
+	3. Rank the days of the week by on-time arrival performance.
+Group 2:
+	1. For each airport X, rank the top-10 carriers in decreasing order of on-time departure performance from X.
+	2. For each source airport X, rank the top-10 destination airports in decreasing order of on-time departure performance from X.
+	3. For each source-destination pair X-Y, rank the top-10 carriers in decreasing order of on-time arrival performance at Y from X.
+	4. For each source-destination pair X-Y, determine the mean arrival delay (in minutes) for a flight from X to Y.
+Group 3 (Answer both questions using Hadoop (or an equivalent batch processing system). You may also use Spark Streaming (or an equivalent stream processing system) to answer Question 2.):
+	1. Does the popularity distribution of airports follow a Zipf distribution? If not, what distribution does it follow?
+	2. Tom wants to travel from airport X to airport Z. However, Tom also wants to stop at airport Y for some sightseeing on the way. More concretely, Tom has the following requirements
+
+
 # For eack task I have recorded the steps I followed to setup my cloud system on AWS (please see the video)
 
 # Task 1
@@ -92,6 +108,50 @@ The integration of the data extraction can be seen in Fig. 1 and the above expla
 
 
 # Task 2
+The goal of this task is to process streaming data. In the Task 1 I worked on the dataset from the US Bureau of Transportation Statistics (BTS). The dataset was hosted as an Amazon EBS volume snapshot with US Snapshot ID (Linux/Unix): snap-e1608d88 and size of 15 GB. Therefore, I have decided to utilize the AWS-EC2 to copy and extract the data. After extracting the data and selecting the necessary fields I have assembled all the data from different files to a single csv file and store it into AWS-S3. In the task 2 I want to somehow ingest the prepared csv data as a real-time live data streaming and then perform real time process streaming, to show how we can impliment a cloud system to perform live analysis.
+
+**1.	Overview of how the system is integrated.**
+
+For my data streaming I have used AWS-Kinesis and my stream processing system is Spark streaming.  My integration for the task 2 of the project is as follow:
+First we have been asked to ingest data into the streaming system. To do so:
+
+1.	I have created an AWS-EC2 instance. EC2 instance: (Amazon Linux 2 AMI) (t2.medium) (SSD 20 GB).
+
+2.	Creating an appropriate IAM to connect the EC2 instance into AWS-S3 and AWS-Kinesis and inset keys using IAM configuration and set the key in the instance using:
+aws configure
+
+3.	From Task-1 of the project I have stored the cleaned data assembled as a single CSV file in my S3 bucket. I copied the cleaned data from my S3 bucket into the EC2 instance:
+
+aws s3 cp s3://cloudcoursecap/aviation/CleanedData.csv 
+
+4.	To ingest the data as a streaming data first I have created an AWS-kinesis stream with 100 shard.
+
+5.	From the EC2 instance using boto3 library in python I send the data as streaming data package to the AWS-kinesis stream using the following python code:
+
+![GitHub Logo](/IMG/3.png)
+
+6.	To check the streaming data I have also created a Kinesis analytics application and connected it to my Kinesis stream. With the Kinesis analytics application we can check the data schema and use SQL for live data inquiry.
+
+7.	I have also created a Kinesis stream delivery and connected it to a S3 bucket so that stream data are timestamped and stored as streaming data.
+
+8.	Create an AWS-EMR (elastic MapReduce): 
+
+#	I have used EMR 6.0.0 with Hadoop 3.2.1 and Spark 2.4.4 
+
+#	I have also used the bootstrap option to install necessary libraries and java files
+
+9.	After connecting to kinesis streamed data I utilized PySpak SQL to inquiry and then I have used writeStream to show them on the concole.
+
+10.	For the questions which needed to be stored on DynamoDB first I have created a separate table for each question in DynamoDB.
+
+11.	To efficiently store the queries results into the DynamoDB tables I have created an AWS Lambda function to automatically push the data to DynamoDB table as explained below.
+
+12.	I set the trigger for the Lambda function as creation of a file on a S3 bucket using boto3. For example here is the Lambda function code for question 3-2:
+
+![GitHub Logo](/IMG/4.png)
+
+
+
 [![Watch the video](https://cdn.vox-cdn.com/thumbor/LR5ki43-jBT1N6nwkcAb4Lg0SnE=/0x0:1200x800/1220x813/filters:focal(504x304:696x496):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65010013/youtube.0.jpg)](https://youtu.be/-U5e7SN_v8g)
 
 
