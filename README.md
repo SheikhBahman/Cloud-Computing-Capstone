@@ -77,7 +77,15 @@ The integration of the data extraction can be seen in Fig. 1 and the above expla
 
 9.	I also created a Cloudwatch to debug the system.
 
+
 ![GitHub Logo](/IMG/2.png)
+
+** I have recorded the implimentation steps in the following video**
+
+[![Watch the video](https://cdn.vox-cdn.com/thumbor/LR5ki43-jBT1N6nwkcAb4Lg0SnE=/0x0:1200x800/1220x813/filters:focal(504x304:696x496):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65010013/youtube.0.jpg)](https://youtu.be/-U5e7SN_v8g)
+
+
+** Please see the Task 1 PDF report for more details on Spark SQL queries **
 
 # Task 2
 [![Watch the video](https://cdn.vox-cdn.com/thumbor/LR5ki43-jBT1N6nwkcAb4Lg0SnE=/0x0:1200x800/1220x813/filters:focal(504x304:696x496):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65010013/youtube.0.jpg)](https://youtu.be/-U5e7SN_v8g)
