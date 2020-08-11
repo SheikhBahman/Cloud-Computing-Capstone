@@ -133,7 +133,8 @@ aws configure
 
 3.	From Task-1 of the project I have stored the cleaned data assembled as a single CSV file in my S3 bucket. I copied the cleaned data from my S3 bucket into the EC2 instance:
 
-aws s3 cp s3://cloudcoursecap/aviation/CleanedData.csv 
+ aws s3 cp s3://cloudcoursecap/aviation/CleanedData.csv   
+
 
 4.	To ingest the data as a streaming data first I have created an AWS-kinesis stream with 100 shard.
 
@@ -147,9 +148,9 @@ aws s3 cp s3://cloudcoursecap/aviation/CleanedData.csv
 
 8.	Create an AWS-EMR (elastic MapReduce): 
 
-#	I have used EMR 6.0.0 with Hadoop 3.2.1 and Spark 2.4.4 
+*	I have used EMR 6.0.0 with Hadoop 3.2.1 and Spark 2.4.4 
 
-#	I have also used the bootstrap option to install necessary libraries and java files
+*	I have also used the bootstrap option to install necessary libraries and java files
 
 9.	After connecting to kinesis streamed data I utilized PySpak SQL to inquiry and then I have used writeStream to show them on the concole.
 
