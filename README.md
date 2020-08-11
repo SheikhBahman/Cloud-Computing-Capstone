@@ -51,6 +51,35 @@ As mentioned in the project description in this project we were asked to work on
 ![GitHub Logo](/IMG/1.png)
 
 
+**2.	Overview of how the system is integrated.**
+
+The integration of the data extraction can be seen in Fig. 1 and the above explanation. After extracting the data following Fig.1 diagram and the above explanation I stored the data in AWS-S3. Then I have followed the following steps to answer the questions as also shown in Fig. 2 diagram:
+
+1.	Create an AWS-EMR (elastic MapReduce): 
+
+*	I have used EMR 6.0.0 with Hadoop 3.2.1 and Spark 2.4.4 using one master node and 2 cores.
+
+*	I have also used the bootstrap option to install: pip, matplotlib, pandas and scipy.
+
+2.	On the EMR I created a PySpark jupyter.
+
+3.	Load the data from AWS-S3 to the PySpark.
+
+4.	For the questions which needed to be stored on DynamoDB first I have created a separate table for each in DynamoDB.
+
+5.	To efficiently store the queries results into the DynamoDB I have created an AWS Lambda function to automatically push to DynamoDB table as explained below. 
+
+6.	I set the trigger for the Lambda function as creation of a file on a S3 bucket using boto3. So when in PySpark I obtain the result for a question, I stored the obtained result into S3 then automatically it will be pushed to the DynamoDB table using the Lambda function.
+
+7.	To connect S3, DynamoDB and CloudWatch to lambda function I also needed to create an IAM policy and a role to attach the policy to the Lambda function. 
+
+8.	Code for the Lambda function is provided in Appendix B (The provided code is for group 2 question1, for the other questions a similar code was used but the name of table and the name of bucket as a trigger was different.
+
+9.	I also created a Cloudwatch to debug the system.
+
+![GitHub Logo](/IMG/2.png)
+
+# Task 2
 [![Watch the video](https://cdn.vox-cdn.com/thumbor/LR5ki43-jBT1N6nwkcAb4Lg0SnE=/0x0:1200x800/1220x813/filters:focal(504x304:696x496):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65010013/youtube.0.jpg)](https://youtu.be/-U5e7SN_v8g)
 
 
