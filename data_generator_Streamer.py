@@ -12,23 +12,6 @@ import time
 
 fake = faker.Factory.create()
 
-# SERVICE_NAMES = ['Miracle Fios']
-# SERVICE_TYPES = ['Broadband', 'TV', 'Phone']
-#
-#
-# DEVICE_TYPE = ['Laptop', 'Mobile', 'Tab', 'Smart-TV']
-# APP_NAME = ['Chrome', 'Safari', 'Firefox', 'Others']
-# CHOICE = ['Y', 'N']
-# CTRL_REC_GEN_COUNT= 100
-# CTRL_SLEEP_TIMER= 60
-#
-# HEADER = ['customer_id', 'ip_address', 'device_type',
-#         'router_mac_address', 'device_name', 'ip_browser',
-#         'website_url', 'app_name', 'is_app_flag', 'is_downloaded_flag',
-#         'data_size', 'is_live_streaming', 'date', 'time']
-
-# URLs are generated through the csv.
-
 class ServicesOffered():
     """Factory for """
     URLs = []
@@ -118,21 +101,12 @@ if __name__ == '__main__':
         for i in range(obj.CTRL_REC_GEN_COUNT):
             row = obj.browser_history()
             browser_history.append(row)
-
         date = datetime.today().strftime("%Y_%m_%d")
         timer = datetime.now().strftime("%H_%M")
         browser_df = pd.DataFrame(browser_history, columns=obj.HEADER)
         data = bytes(browser_df.to_json(orient='records'), encoding='utf-8')
         print(data)
         req = requests.post(REST_API_URL, data)
-
-        # current_dir = os.getcwd()
-        # dir_exists = os.path.join(current_dir, r'records')
-        #
-        # if not os.path.exists(dir_exists):
-        #     os.makedirs(os.path.join(dir_exists))
-        # #browser_df.to_csv("records/ISPLog_{}_{}.csv".format(date, timer), index=False)
-        # print ('csv generated at: ', timer)
         print("Data posted")
-        # This is in seconds. change this to increase / decrease frequency of csv generation
+        # This is in seconds, frequency of data generation
         time.sleep(5)
